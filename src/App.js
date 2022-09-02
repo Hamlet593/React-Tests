@@ -8,7 +8,7 @@ function App() {
   const [trueTitle, setTrueTitle] = useState(true);
 
   useEffect(() => {
-    if (title.length === 0 || title.length > 61) {
+    if (title.length === 0 || title.length > 60) {
       setTrueTitle(false);
     } else setTrueTitle(true);
   }, [title]);
