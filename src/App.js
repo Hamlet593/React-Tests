@@ -1,6 +1,18 @@
+import { useState, useEffect } from 'react';
 import './App.css';
+import SaveButton from './helpers/ShowModal.js';
 
 function App() {
+
+  const [title, setTitle] = useState('');
+  const [trueTitle, setTrueTitle] = useState(true);
+
+  useEffect(() => {
+    if (title.length === 0 || title.length > 61) {
+      setTrueTitle(false);
+    } else setTrueTitle(true);
+  }, [title]);
+
 
   return (
     <div className="App">
@@ -14,24 +26,15 @@ function App() {
             <div className="col-8">
               <div className="form-field-container mb-3">
                 <div className="form-field position-relative ">
-                  <input id="og_title" name="og_title" type="text" autoComplete="off" required="" className=" active" maxLength="60" value="" />
+                  <input id="og_title" name="og_title" type="text" autoComplete="off" required="" className=" active" value={title} onChange={evt => {
+                    setTitle(evt.target.value);
+                  }} />
                 </div>
-                <small className="form-text text-muted text-right">0 / 60</small>
+                <small className="form-text text-muted text-right">Characters left: {60 - title.length}</small>
               </div>
             </div>
           </div>
-          <div className="row mb-4">
-            <div className="col-4">
-              <h6 className="mb-1">URL Handle</h6>
-              <p className="text-xs text-muted mb-0">Set the permalink to your video page.</p>
-            </div>
-            <div className="col-8">
-              <div className="form-field-container mb-3">
-                <div className="form-field position-relative ">
-                  <input id="og_url" name="og_url" type="text" autoComplete="off" required="" className=" active" value="" /></div>
-              </div>
-            </div>
-          </div>
+
           <div className="row mb-4">
             <div className="col-4">
               <h6 className="mb-1">SEO Description</h6>
@@ -47,7 +50,9 @@ function App() {
             </div>
           </div>
           <div className="pt-3 text-right">
-            <button type="submit" className="btn btn-sm btn-outline-primary mnw-100 py-1 text-uppercase weight-400 fz-12">Save</button>
+            <SaveButton
+              trueTitle={trueTitle}
+            />
           </div>
         </form>
       </div>
