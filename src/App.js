@@ -30,7 +30,6 @@ function App() {
 
   const AlertSuccess = () => (
     <div className="alert alert-success p-2 w-full items-center justify-center flex top-0 z-75 bg-green-600 text-white" role="alert" style={{
-      color: 'white',
       backgroundColor: "#27b86f"
     }}>
       SEO successfully saved.
@@ -39,12 +38,15 @@ function App() {
 
   const AlertError = () => (
     <div className="alert alert-danger p-2 w-full items-center justify-center flex top-0 z-75 bg-green-600 text-white" role="alert" style={{
-      color: 'white',
       backgroundColor: "#ed0b0b"
     }}>
       You are almost done. Please resolve errors for fields highlighted in red.
     </div>
   )
+
+  
+  // This part is for css custom color
+
 
   // This part is for useForm hook
 
@@ -79,7 +81,7 @@ function App() {
 
                   <input
                     type='text'
-                    {...register('Seo Title', {
+                    {...register('firstName', {
                       required: `Can't be blank`,
                       maxLength: {
                         value: 60,
@@ -89,9 +91,16 @@ function App() {
                     onChange={evt => {
                       setTitle(evt.target.value);
                     }}
+                    style={{
+                      width: 400,
+                      border: trueTitle ? '2px solid #e2e8f0' : '2px solid red',
+                    }}
                   />
 
-                  <div style={{ height: 20, color: 'red' }}>
+                  <div style={{
+                    height: 30,
+                    color: 'red'
+                  }}>
                     {errors?.firstName && <p>{errors?.firstName?.message}</p>}
                   </div>
                 </div>
@@ -113,7 +122,7 @@ function App() {
 
                   <input
                     type='text'
-                    {...register('Seo Description', {
+                    {...register('lastName', {
                       maxLength: {
                         value: 170,
                         message: `Is too long (maximum is 170 characters)`
@@ -122,9 +131,16 @@ function App() {
                     onChange={evt => {
                       setDescription(evt.target.value);
                     }}
+                    style={{
+                      width: 400,
+                      border: trueDescription ? '2px solid #e2e8f0' : '2px solid red',
+                    }}
                   />
 
-                  <div style={{ height: 20, color: 'red' }}>
+                  <div style={{
+                    height: 30,
+                    color: 'red'
+                  }}>
                     {errors?.lastName && <p>{errors?.lastName?.message}</p>}
                   </div>
 
