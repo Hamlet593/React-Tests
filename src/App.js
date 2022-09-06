@@ -44,10 +44,6 @@ function App() {
     </div>
   )
 
-  
-  // This part is for css custom color
-
-
   // This part is for useForm hook
 
   const {
@@ -81,7 +77,7 @@ function App() {
 
                   <input
                     type='text'
-                    {...register('firstName', {
+                    {...register('title', {
                       required: `Can't be blank`,
                       maxLength: {
                         value: 60,
@@ -93,7 +89,6 @@ function App() {
                     }}
                     style={{
                       width: 400,
-                      border: trueTitle ? '2px solid #e2e8f0' : '2px solid red',
                     }}
                   />
 
@@ -101,7 +96,7 @@ function App() {
                     height: 30,
                     color: 'red'
                   }}>
-                    {errors?.firstName && <p>{errors?.firstName?.message}</p>}
+                    {errors?.title && <p>{errors?.title?.message}</p>}
                   </div>
                 </div>
                 <small className="form-text text-muted text-right">Characters left: {60 - title.length}</small>
@@ -122,7 +117,7 @@ function App() {
 
                   <input
                     type='text'
-                    {...register('lastName', {
+                    {...register('description', {
                       maxLength: {
                         value: 170,
                         message: `Is too long (maximum is 170 characters)`
@@ -133,7 +128,6 @@ function App() {
                     }}
                     style={{
                       width: 400,
-                      border: trueDescription ? '2px solid #e2e8f0' : '2px solid red',
                     }}
                   />
 
@@ -141,7 +135,7 @@ function App() {
                     height: 30,
                     color: 'red'
                   }}>
-                    {errors?.lastName && <p>{errors?.lastName?.message}</p>}
+                    {errors?.description && <p>{errors?.description?.message}</p>}
                   </div>
 
                 </div>
