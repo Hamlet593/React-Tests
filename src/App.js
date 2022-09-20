@@ -1,5 +1,5 @@
 import "./style.css/App.css";
-import { useReducer } from "react";
+import { useState } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import TodoFooter from "./TodoFooter";
@@ -28,6 +28,16 @@ function reducer(state, action) {
   } else if (action.type === "clear") {
     return state.filter((todo) => !todo.isCompleted);
   }
+}
+
+
+function useReducer(reducer, initialState) {
+
+  const [state, setState] = useState(initialState);
+
+  return [state, action => {
+    setState(reducer(state, action))
+  }]
 }
 
 function App() {
