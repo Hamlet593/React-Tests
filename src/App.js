@@ -97,28 +97,48 @@
 
 // export default App;
 
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
+// import "./style.css/App.css";
+
+// function Comp3() {
+//   return <Comp2 />;
+// }
+
+// function Comp2() {
+//   const value = useContext(CountryContext);
+//   return value;
+// }
+
+// const CountryContext = React.createContext();
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <CountryContext.Provider value={[6]}>
+//         <Comp3 />
+//       </CountryContext.Provider>
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import "./style.css/App.css";
-
-function Comp3() {
-  return <Comp2 />;
-}
-
-function Comp2() {
-  const value = useContext(CountryContext);
-  return value;
-}
-
-const CountryContext = React.createContext();
+import axios from "axios";
 
 function App() {
-  return (
-    <div className="App">
-      <CountryContext.Provider value={[6]}>
-        <Comp3 />
-      </CountryContext.Provider>
-    </div>
-  );
+  axios
+    .get("https://fortniteapi.io/v3/challenges", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "489b0f7b-4d48c21b-50dff77b-1e8e62f9",
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => console.log(err));
+  return <div className="App">Hamo</div>;
 }
 
 export default App;
