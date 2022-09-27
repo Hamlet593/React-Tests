@@ -123,60 +123,76 @@
 
 // export default App;
 
+// * * *
+
+// import "./style.css/App.css";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+// const GetToken = async () => {
+//   const response = await axios({
+//     method: "post",
+//     url: "https://devapi.kinodaran.com:9090/auth",
+//     data: {
+//       email: "hamlet@advancedtech.am",
+//       password: "Grqamolutyun93$",
+//     },
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   return response.data;
+// };
+
+// async function getPosts() {
+//   let myToken = await GetToken();
+//   const data = await axios({
+//     url: "https://devapi.kinodaran.com:9090/home/posters",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `bearer ${myToken.token}`,
+//     },
+//   });
+//   console.log(data);
+//   return data.data.content;
+// }
+
+// function App() {
+//   const [images, setImages] = useState([]);
+
+//   const getImages = () => {
+//     getPosts().then((data) => setImages(data));
+//   };
+
+//   useEffect(() => {
+//     getImages();
+//   }, []);
+
+//   return (
+//     <div className="App">
+//       {images.map((image) => {
+//         return (
+//           <div key={image.id}>
+//             <img src={image.image.types[2].url} alt="posters" />
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// * * * 
+
 import "./style.css/App.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-const GetToken = async () => {
-  const response = await axios({
-    method: "post",
-    url: "https://devapi.kinodaran.com:9090/auth",
-    data: {
-      email: "hamlet@advancedtech.am",
-      password: "Grqamolutyun93$",
-    },
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return response.data;
-};
-
-async function getPosts() {
-  let myToken = await GetToken();
-  const data = await axios({
-    url: "https://devapi.kinodaran.com:9090/home/posters",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `bearer ${myToken.token}`,
-    },
-  });
-  console.log(data);
-  return data.data.content;
-}
-
-function App() {
-  const [images, setImages] = useState([]);
-
-  const getImages = () => {
-    getPosts().then((data) => setImages(data));
-  };
-
-  useEffect(() => {
-    getImages();
-  }, []);
-
+function App () {
   return (
     <div className="App">
-      {images.map((image) => {
-        return (
-          <div key={image.id}>
-            <img src={image.image.types[2].url} alt="posters" />
-          </div>
-        );
-      })}
+      Hellooo
     </div>
-  );
-}
+  )
+};
 
 export default App;
