@@ -1,27 +1,30 @@
-import React, { useRef } from "react";
+import { memo, useRef } from "react";
 
-const VideoPlayer = ({ src }) => {
-  const videoRef = useRef();
+export default memo(function VideoPlayer ({ src }) {
+  const refUser = useRef();
+
+  const countRef = useRef(0);
+  countRef.current++;
+  console.log(countRef.current);
 
   return (
     <div>
-      <video src={src} ref={videoRef} />
+      <p>Call count is {countRef.current}</p>
+      <video src={src} ref={refUser} />
       <button
         onClick={() => {
-          videoRef.current.play();
+          refUser.current.play();
         }}
       >
         Play
       </button>
       <button
         onClick={() => {
-          videoRef.current.pause();
+          refUser.current.pause();
         }}
       >
         Pause
       </button>
     </div>
   );
-};
-
-export default VideoPlayer;
+});

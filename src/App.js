@@ -4,6 +4,8 @@
 // import TodoForm from "./TodoForm";
 // import TodoFooter from "./TodoFooter";
 
+// import { useState } from "react";
+
 // function reducer(state, action) {
 //   if (action.type === "add") {
 //     return [
@@ -97,32 +99,6 @@
 
 // export default App;
 
-// import React, { useContext } from "react";
-// import "./style.css/App.css";
-
-// function Comp3() {
-//   return <Comp2 />;
-// }
-
-// function Comp2() {
-//   const value = useContext(CountryContext);
-//   return value;
-// }
-
-// const CountryContext = React.createContext();
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <CountryContext.Provider value={[6]}>
-//         <Comp3 />
-//       </CountryContext.Provider>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 // * * *
 
 // import "./style.css/App.css";
@@ -146,6 +122,7 @@
 
 // async function getPosts() {
 //   let myToken = await GetToken();
+//   console.log(myToken);
 //   const data = await axios({
 //     url: "https://devapi.kinodaran.com:9090/home/posters",
 //     headers: {
@@ -153,7 +130,6 @@
 //       Authorization: `bearer ${myToken.token}`,
 //     },
 //   });
-//   console.log(data);
 //   return data.data.content;
 // }
 
@@ -183,16 +159,27 @@
 
 // export default App;
 
-// * * * 
+// * * *
 
+import { useState } from "react";
 import "./style.css/App.css";
+import VideoPlayer from "./VideoPlayer";
 
-function App () {
+function App() {
+  const [text, setText] = useState("");
   return (
-    <div className="App">
-      Hellooo
+    <div className="App"> 
+      <input
+        type="text"
+        value={text}
+        onChange={({ target }) => {
+          setText(target.value);
+        }}
+      />
+      <span>{text}</span>
+      <VideoPlayer src='https://www.w3schools.com/html/mov_bbb.mp4'/>
     </div>
-  )
-};
+  );
+}
 
 export default App;
